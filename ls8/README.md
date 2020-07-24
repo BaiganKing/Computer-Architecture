@@ -89,13 +89,13 @@ the `CPU` object.
 `ram_read()` should accept the address to read and return the value stored
 there.
 
-`ram_write()` should accept a value to write, and the address to write it to.
+`raw_write()` should accept a value to write, and the address to write it to.
 
 > Inside the CPU, there are two internal registers used for memory operations:
 > the _Memory Address Register_ (MAR) and the _Memory Data Register_ (MDR). The
 > MAR contains the address that is being read or written to. The MDR contains
 > the data that was read or the data to write. You don't need to add the MAR or
-> MDR to your `CPU` class, but they would make handy parameter names for
+> MDR to your `CPU` class, but they would make handy paramter names for
 > `ram_read()` and `ram_write()`, if you wanted.
 
 We'll make use of these helper function later.
@@ -132,9 +132,9 @@ The number of bytes an instruction uses can be determined from the two high bits
 Add the `HLT` instruction definition to `cpu.py` so that you can refer to it by
 name instead of by numeric value.
 
-In `run()` in your if-else block, exit the loop if a `HLT` instruction is
-encountered, regardless of whether or not there are more lines of code in the
-LS-8 program you loaded. 
+In `run()` in your switch, exit the loop if a `HLT` instruction is encountered,
+regardless of whether or not there are more lines of code in the LS-8 program
+you loaded. 
 
 We can consider `HLT` to be similar to Python's `exit()` in that we stop
 whatever we are doing, wherever we are.
@@ -323,7 +323,7 @@ its definition, and then return back to the line of code following the call,
 subroutines will also allow us to execute instructions non-sequentially. 
 
 The stack is used to hold the return address used by `RET`, so you **must**
-implement the stack in step 10, first. Then, add subroutine instructions `CALL`
+implement the stack in step 11, first. Then, add subroutine instructions `CALL`
 and `RET`.
 
 * For `CALL`, you will likely have to modify your handler call in `cpu_run()`.
